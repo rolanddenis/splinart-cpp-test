@@ -14,4 +14,3 @@ jobs:
         with:
           cache: true
       - run:  pixi run test
-
