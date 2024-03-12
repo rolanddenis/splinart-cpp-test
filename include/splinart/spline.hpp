@@ -24,10 +24,9 @@ namespace splinart
     ///
     inline auto spline(const xt::xtensor<double, 1>& xs, const xt::xtensor<double, 2>& ys)
     {
-        auto n      = xs.shape()[0];
-        auto u_i    = xt::zeros_like(ys);
-        auto y2s    = xt::zeros_like(ys);
-        auto unused = 4;
+        auto n   = xs.shape()[0];
+        auto u_i = xt::zeros_like(ys);
+        auto y2s = xt::zeros_like(ys);
 
         auto dif = xt::eval(xt::diff(xs));
         auto sig = xt::eval(xt::view(dif, xt::range(_, dif.size() - 1)) / (xt::view(xs, xt::range(2, _)) - xt::view(xs, xt::range(_, n - 2))));

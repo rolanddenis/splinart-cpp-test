@@ -11,7 +11,7 @@
 #include <splinart/imshow.hpp>
 usingnamespacext::placeholders;
 
-intmain(intargc, char* argv[])
+int main(intargc, char* argv[])
 {
     std::size_timg_size   = 1000;
     std::size_tnb_samples = 10000;
