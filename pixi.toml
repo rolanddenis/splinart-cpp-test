@@ -10,11 +10,14 @@ platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
 clean = { cmd = "ninja -C .build -t clean" }
 configure = { cmd = "cmake -G Ninja -S . -B .build -DCMAKE_BUILD_TYPE=Release" }
 configure_test = { cmd = "cmake -G Ninja -S . -B .build -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo" }
+configure_example = { cmd = "cmake -G Ninja -S . -B .build -DBUILD_EXAMPLES=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo" }
 build_ninja = { cmd = "ninja -C .build" }
 build = { depends_on = ["configure", "build_ninja"] }
 build_test = { depends_on = ["configure_test", "build_ninja"] }
+build_example = { depends_on = ["configure_example", "build_ninja"] }
 start = { cmd = ".build/splinart-cpp", depends_on = ["build"] }
 test = { cmd = ".build/tests/test_splinart", depends_on = ["build_test"] }
+example = { cmd = ".build/examples/circle", depends_on = ["build_example"] }
 doc = { cmd = "cd doc; make html" }
 
 [dependencies]
