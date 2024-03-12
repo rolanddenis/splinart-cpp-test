@@ -3,7 +3,7 @@ name: "Run Doc"
 on: pull_request
 
 jobs:
-  cppcheck:
+  doc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,3 +13,5 @@ jobs:
       - run: pixi run doc
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: doc/build/html
