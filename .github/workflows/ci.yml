@@ -3,7 +3,14 @@ name: "Run CI"
 on: pull_request
 
 jobs:
+  pre-commit:
+    runs-on: ubuntu-lates
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pre-commit/action@v3.0.1
+    
   tests:
+    needs: pre-commit
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
