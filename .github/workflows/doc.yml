@@ -17,7 +17,7 @@ jobs:
           cache: true
       - run: pixi run doc
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v2 # deploy job doesn't work if using v3 here
         with:
           path: doc/build/html
 
