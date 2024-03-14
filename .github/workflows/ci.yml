@@ -16,7 +16,9 @@ jobs:
           cache: true
       - run: |
           cmake -S . -B .build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON
-          cppcheck --enable=all -q --project=.build/compile_commands.json --suppressions-list=.cppcheck --error-exitcode=1
+          pip install compdb
+          compdb -p .build list > compile_commands.json
+          cppcheck --enable=all -q --project=compile_commands.json --suppressions-list=.cppcheck --error-exitcode=1
         shell: pixi run bash -e {0}
 
   pre-commit:
