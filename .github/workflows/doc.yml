@@ -34,8 +34,7 @@ jobs:
           path: doc/build/html
 
   deploy:
-    my_job:
-      if: github.repository == 'rolanddenis/splinart-cpp-test' && github.ref == 'refs/heads/main'
+    if: github.repository == 'rolanddenis/splinart-cpp-test' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     permissions:
