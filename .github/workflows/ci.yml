@@ -1,6 +1,10 @@
 name: "Run CI"
 
-on: pull_request
+on:
+  pull_request:
+    paths-ignore:
+      - 'doc/**'
+      - '.github/workflows/doc.yml'
 
 jobs:
   cppcheck:
